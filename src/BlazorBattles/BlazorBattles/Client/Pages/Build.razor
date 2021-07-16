@@ -1,6 +1,7 @@
 ﻿@page "/build"
 @inject IBananaService BananaService
 @inject IUnitService UnitService
+@inject IToastService ToastService
 
 <h3>Build</h3>
 <div class="form-group">
@@ -14,22 +15,37 @@
 </div>
 <button class="btn btn-primary" @onclick="BuildUnit">Build Unit</button>
 
+@if(needMoreBananas)
+            {
+
+    <div class="validation-message">
+        Not enough bananas! :(
+    </div>
+            }
+
 @code {
 
+
     int selectUnitId = 1;
+    bool needMoreBananas = false;
+
     public void BuildUnit()
     {
         var selectedUnit = UnitService.Units.FirstOrDefault(unit => unit.Id == selectUnitId);
+
+        if(BananaService.Bananas<selectedUnit.BananaCost)
+        {
+            needMoreBananas = true;
+            ToastService.ShowError("Not enough bananas!", ":("); 
+            return;
+        }
+
+        needMoreBananas = false;
+
         BananaService.EatBananas(selectedUnit.BananaCost);
-        UnitService.AddUnit(selectUnitId); 
+        UnitService.AddUnit(selectUnitId);
 
     }
 
-
-    /* private void EatBananas(int amount)
-     {
-         BananaService.EatBananas(amount);
-        // Console.WriteLine($"{amount} bananas eaten.");
-     }*/
 
 }
