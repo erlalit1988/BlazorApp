@@ -71,7 +71,7 @@ namespace PracticePrograms
             }
             return sb.ToString();
         }
-        private static bool IsPrimeNum(int input)
+        public static bool IsPrimeNum(int input)
         {
             bool isprime = false;
             for (int i = 2; i <= input; i++)
@@ -89,5 +89,6 @@ namespace PracticePrograms
             }
             return isprime;
         }
+
     }
 }
