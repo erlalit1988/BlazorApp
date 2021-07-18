@@ -9,34 +9,48 @@ using Catalog.Dtos;
 namespace Catalog.Controllers
 {
     [ApiController]
-    [Route("Items")]
+    [Route("items")]
     public class ItemsContoller:ControllerBase
     {
-       // private readonly InMemItemRepository repository;
-        private readonly IItemsRepository itmesRepo;
+        private readonly IItemsRepository _itmesRepo;
 
         public ItemsContoller(IItemsRepository itmesRepo)
         {
-            //repository = new InMemItemRepository();
-            this.itmesRepo = itmesRepo;
+            _itmesRepo = itmesRepo;
         }
         //Get/items
         [HttpGet]
         public IEnumerable<ItemDto> GetItmes()
         {
-            var items= itmesRepo.GetItems().Select(x => x.AsDto());
+            var items= _itmesRepo.GetItems()
+                         .Select(item => item.AsDto()).ToList();
             return items;
         }
         //Get/items/{id}
          [HttpGet("{id}")]
-        public ActionResult<ItemDto> GetItme(Guid id)
+        public ActionResult<ItemDto> GetItem(Guid id)
         {
-            var item=itmesRepo.GetItem(id);
+            var item= _itmesRepo.GetItem(id);
             if(item is null)
             {
                 return NotFound();
             }
             return item.AsDto();
+        }
+        //Post/items
+        [HttpPost]
+        public ActionResult<ItemDto> CreateItem(CreateItemDto itemDto)
+        {
+            Item item=new()
+            {
+                Id=Guid.NewGuid(),
+                Name=itemDto.Name,
+                Price=itemDto.Price,
+                CreateDate=DateTimeOffset.UtcNow
+            };
+            _itmesRepo.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetItem),new {id = item.Id},item.AsDto());
         }
     }
 }
