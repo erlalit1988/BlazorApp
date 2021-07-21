@@ -89,6 +89,86 @@ namespace PracticePrograms
             }
             return isprime;
         }
+        public static void NewMethod1(int noOfRows)
+        {
+            /* Program to print Pattern with Numbers
+             * 1
+             * 2 2
+             * 3 3 3
+             * 4 4 4 4
+             * 5 5 5 5 5
+             */
+            for (int row = 1; row <= noOfRows; row++)
+            {
+                for (int col = 1; col <= row; col++)
+                {
+                    Console.Write(row + " ");
+
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void NewMethod2(int noOfRows)
+        {
+            /* Program to print Pattern with Numbers
+            * 1
+            * 1 2
+            * 1 2 3
+            * 1 2 3 4
+            * 1 2 3 4 5
+            */
+            for (int row = 1; row <= noOfRows; row++)
+            {
+                for (int col = 1; col <= row; col++)
+                {
+                    Console.Write(col + " ");
+
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void NewMethod3(int noOfRows)
+        {
+            /* Program to print Pattern Floyd's Triangle
+            * 1
+            * 2 3
+            * 4 5 6
+            * 7 8 9 10
+            * 11 12 13 14 15
+            */
+            int counter = 1;
+
+            for (int row = 1; row <= noOfRows; row++)
+            {
+                for (int col = 1; col <= row; col++)
+                {
+                    Console.Write(counter + " ");
+                    counter++;
+
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void NewMethod4(int noOfRows)
+        {
+            /* Program to print Pattern with Numbers
+             * 1
+             * 1 1
+             * 1 1 1
+             * 1 1 1 1
+             * 1 1 1 1 1
+             */
+            int counter = 1;
+            for (int row = 1; row <= noOfRows; row++)
+            {
+                for (int col = 1; col <= row; col++)
+                {
+                    Console.Write(counter + " ");
+
+                }
+                Console.WriteLine();
+            }
+        }
 
     }
 }
