@@ -6,6 +6,34 @@ using System.Threading.Tasks;
 
 namespace PracticePrograms
 {
+    //public class A
+    //{
+    //    public virtual void AMethod()
+    //    {
+    //        Console.WriteLine("A method call");
+    //    }
+    //}
+    //public class B : A
+    //{
+    //    public override void AMethod()
+    //    {
+    //        Console.WriteLine("B method call");
+    //    }
+    //}
+    //public class C : B
+    //{
+    //    public virtual void CMethod()
+    //    {
+    //        Console.WriteLine("C method call");
+    //    }
+    //}
+    //public class D : C
+    //{
+    //    public override void CMethod()
+    //    {
+    //        Console.WriteLine("D method call");
+    //    }
+    //}
     public class GeneralPro
     {
         public static int Print2larggest(int[] arr, int arr_size)
